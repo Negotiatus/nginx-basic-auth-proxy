@@ -29,14 +29,11 @@ http {
       # Do not pass Authorization header to destination
       proxy_set_header Authorization "";
     }
-  }
 
-  server {
-    listen 8090;
-
-    location /nginx_status {
-      stub_status on;
-      access_log off;
+    location /health {
+        stub_status on;
+        access_log off;
+        auth_basic off;
     }
   }
 }
